@@ -33,13 +33,11 @@ const schema = new Schema(
     profession: {
       type: Schema.Types.ObjectId,
       ref: "Profession",
-      required: true,
     },
     qualities: [
       {
         type: Schema.Types.ObjectId,
         ref: "Quality",
-        required: true,
       },
     ],
   },
