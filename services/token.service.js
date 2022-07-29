@@ -6,6 +6,7 @@ class tokenService {
     const accessToken = jwt.sign(payload, config.get("accessSecret"), {
       expiresIn: "1h",
     })
+
     const refreshToken = jwt.sign(payload, config.get("refreshSecret"))
     return {
       accessToken,
@@ -25,6 +26,13 @@ class tokenService {
   validateRefresh(refreshToken) {
     try {
       return jwt.verify(refreshToken, config.get("refreshSecret"))
+    } catch (e) {
+      return null
+    }
+  }
+  validateAccess(accessToken) {
+    try {
+      return jwt.verify(accessToken, config.get("accessSecret"))
     } catch (e) {
       return null
     }
